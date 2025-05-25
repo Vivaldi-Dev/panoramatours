@@ -13,7 +13,7 @@ function BannerImg() {
                     <p>de viagem e novidades da Atlantic Travel.</p>
 
 
-                    <div className='mt-5 flex items-center bg-[#F9D423] py-2 px-2 rounded-[30px] gap-4 w-2/12'>
+                    <div className='mt-5 flex items-center bg-[#ff681a] py-2 px-2 rounded-[30px] gap-4 w-2/12'>
 
                         <div className='w-10 h-10 rounded-full bg-white flex justify-center items-center'>
                             <Image width={20} height={20}

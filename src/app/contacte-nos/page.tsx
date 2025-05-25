@@ -110,7 +110,7 @@ export default function page() {
                                 <label htmlFor="mensagem" className="mb-2 font-semibold text-sm text-gray-700">Mensagem</label>
                                 <textarea
                                     id="mensagem"
-                                    rows={5}  // Remova as aspas para que seja um número
+                                    rows={5}  
                                     placeholder="Escreva aqui a sua mensagem..."
                                     className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 ></textarea>

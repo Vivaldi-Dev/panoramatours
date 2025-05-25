@@ -11,7 +11,7 @@ function Card() {
                 </div>
 
                 <div className='relative'>
-                    <div className="absolute top-2 -left-2 w-full h-full border-2 border-[#F9D423] rounded-2xl rotate-10 z-0"></div>
+                    <div className="absolute top-2 -left-2 w-full h-full border-2 border-[#ff681a]  rounded-2xl rotate-10 z-0"></div>
 
                     <div className="relative  h-full sm:min-h-[400px] md:min-h-[200px] sm:p-2 md:p-2 rounded-2xl bg-[#D9D9D9] flex flex-col justify-between">
                         <div className=' mb-0'>
@@ -34,7 +34,7 @@ function Card() {
 
 
                 <div className='relative'>
-                    <div className="absolute top-2 -left-2 w-full h-full border-2 border-[#F9D423] rounded-2xl rotate-10 z-0"></div>
+                    <div className="absolute top-2 -left-2 w-full h-full border-2 border-[#ff681a] rounded-2xl rotate-10 z-0"></div>
                     <div className="relative h-full sm:min-h-[400px] md:min-h-[200px] sm:p-2 md:p-2 rounded-2xl bg-[#D9D9D9] flex flex-col justify-between">
                         <div className=' mb-0'>
                             <Image src="/icons/aviao.png" alt="" width={70} height={50}  />

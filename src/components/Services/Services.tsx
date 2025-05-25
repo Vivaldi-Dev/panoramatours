@@ -17,7 +17,7 @@ function Services() {
                                     Roteiros únicos, criados à tua medida.
                                 </p>
                             </div>
-                            <p className='py-1.5 px-4 rounded-full bg-[#F9D423] text-[#0871B5] w-fit font-semibold text-sm'>
+                            <p className='py-1.5 px-4 rounded-full bg-[#ff681a] text-[#0871B5] w-fit font-semibold text-sm'>
                                 Ver opções
                             </p>
                         </div>
@@ -32,7 +32,7 @@ function Services() {
 
                                 </p>
                             </div>
-                            <p className='py-1.5 px-4 rounded-full bg-[#F9D423] text-[#0871B5] w-fit font-semibold text-sm'>
+                            <p className='py-1.5 px-4 rounded-full bg-[#ff681a] text-[#0871B5] w-fit font-semibold text-sm'>
                                 Ver opções
                             </p>
                         </div>
@@ -46,7 +46,7 @@ function Services() {
                                 <p className='text-white font-semibold text-sm'>Viaja sem preocupações, tratamos de vistos.</p>
                             </div>
 
-                            <p className='py-1.5 px-4 rounded-full bg-[#F9D423] text-[#0871B5] w-fit font-semibold text-sm'>
+                            <p className='py-1.5 px-4 rounded-full bg-[#ff681a] text-[#0871B5] w-fit font-semibold text-sm'>
                                 Ver opções
                             </p>
                         </div>
@@ -61,7 +61,7 @@ function Services() {
                                     Viaja sem preocupações  tratamos de vistos,
                                 </p>
                             </div>
-                            <p className='py-1.5 px-4 rounded-full bg-[#F9D423] text-[#0871B5] w-fit font-semibold text-sm'>
+                            <p className='py-1.5 px-4 rounded-full bg-[#ff681a] text-[#0871B5] w-fit font-semibold text-sm'>
                                 Ver opções
                             </p>
                         </div>
