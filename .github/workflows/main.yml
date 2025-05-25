@@ -26,4 +26,5 @@ jobs:
             npm install
             npm run build
             pm2 restart panoramatours || pm2 start npm --name "panoramatours" -- start
+            pm2 save
           EOF
