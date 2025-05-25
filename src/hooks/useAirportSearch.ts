@@ -37,7 +37,7 @@ export const useAirportSearch = () => {
       setError(null);
 
       try {
-        const response = await axios.get('https://api.panoramatours.co.mz/api/search', {
+        const response = await axios.get('/api/search', {
           params: {
             keyword: searchTerm,
             view: 'FULL'
