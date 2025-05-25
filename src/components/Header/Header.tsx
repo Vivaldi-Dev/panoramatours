@@ -26,7 +26,7 @@ export default function Header() {
                         <div className='flex items-center gap-4'>
                             <p className='h-4 w-4 flex justify-center items-center bg-[#06853A] p-4 rounded-full'>
                                 <a
-                                    href="https://wa.me/258849551298"
+                                    href="https://wa.me/258847491425 "
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-green-500 text-xl"
