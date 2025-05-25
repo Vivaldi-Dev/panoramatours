@@ -190,7 +190,7 @@ export function useFlightSearch() {
     setError(null);
 
     try {
-      const response = await axios.post<ApiResponse>('http://192.168.225.190:4000/api/search-flights', formData);
+      const response = await axios.post<ApiResponse>('http://139.162.169.48:4000/api/search-flights', formData);
       const transformedData = transformFlightData(response.data);
       setResults(transformedData);
     } catch (err) {
