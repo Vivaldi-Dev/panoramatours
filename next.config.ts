@@ -3,7 +3,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'https://panoramatours.co.mz:4000/api/:path*',
+        destination: 'http://192.168.225.190:4000/api/:path*',
       },
     ];
   },
