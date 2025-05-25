@@ -37,7 +37,7 @@ export const useAirportSearch = () => {
       setError(null);
 
       try {
-        const response = await axios.get('http://139.162.169.48:4000/api/search', {
+        const response = await axios.get('https://139.162.169.48:4000/api/search', {
           params: {
             keyword: searchTerm,
             view: 'FULL'
