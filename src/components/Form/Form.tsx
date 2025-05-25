@@ -170,7 +170,7 @@ export default function FlightSearchForm() {
   return (
     <div className="">
       <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:mb-6">
           <div className="relative" ref={origemRef}>
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="origem">
               Origem

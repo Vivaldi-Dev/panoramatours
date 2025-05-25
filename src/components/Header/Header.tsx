@@ -8,7 +8,7 @@ export default function Header() {
     return (
         <>
             <div className='bg-black fixed top-0 w-full z-[999] py-3'>
-                <div className='max-w-[1640px] mx-auto'>
+                <div className='max-w-[1640px] px-10 mx-auto'>
                     <div className='flex justify-between items-center '>
                         <div>
                             <Image width={250} height={40} src="/logotipo.png" alt="Logo" className='' />

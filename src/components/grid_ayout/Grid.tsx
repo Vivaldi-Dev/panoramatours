@@ -21,7 +21,7 @@ const cardImages: CardImage[] = [
 
 export default function Grid({ onChangeBackground }: GridProps) {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:p-2 lg:p-4">
             <div className="md:col-span-7 p-4 rounded">
                 <Form />
             </div>
