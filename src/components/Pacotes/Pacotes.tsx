@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 export default function Pacotes() {
     return (
-        <div>
+        <div className='mt-30 mb-30'>
             <div className='max-w-[1440px] mx-auto p-8 relative'>
 
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-20'>

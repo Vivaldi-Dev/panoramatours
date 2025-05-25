@@ -13,7 +13,7 @@ export default function Banner() {
 
             <div className="absolute inset-0 bg-black opacity-40"></div>
 
-            <div className="relative z-10 text-center mt-[-50px] md:mt-[50px]  lg:mt-[-40px] 2xl:mt-[-150px] ">
+            <div className="relative z-10 text-center mt-[-50px] md:mt-[50px]  lg:mt-[-40px] 2xl:mt-[-260px] ">
                 <p className="text-white">Viagens Internacionais | Viagens Nacionais</p>
                 <h1 className="text-white text-4xl md:text-6xl font-bold drop-shadow-lg">Explore o Mundo</h1>
                 <h1 className="text-white text-4xl md:text-6xl font-bold drop-shadow-lg">com Confiança</h1>
@@ -24,7 +24,7 @@ export default function Banner() {
                 </div>
             </div>
 
-            <div className="absolute bottom-10 top-100  w-full max-w-[1640px] mx-auto">
+            <div className="absolute bottom-5 mt-50 left-1/2 transform -translate-x-1/2 z-10 w-full max-w-[1640px] mx-auto">
                 <div className="opcityc rounded-xl  shadow-lg">
                     <Grid onChangeBackground={setBackgroundImage} />
                 </div>
