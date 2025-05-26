@@ -13,9 +13,8 @@ export default function page() {
         <div className="max-w-2xl text-white px-6">
           <h1 className="text-4xl font-bold mb-4">Panorama Tours</h1>
           <h2 className="text-2xl font-semibold mb-3">Quem Somos?</h2>
-          <p className="text-lg leading-relaxed font-semibold">
-            A Panorama Tours é uma agência de viagens que nasce no mercado para satisfazer as necessidades dos clientes no ramo de viagens e turismo. Tem como principal objectivo oferecer um agênciamento diferente, que se concentra sobretudo na qualidade e dinâmica.
-          </p>
+          <p className="text-md leading-relaxed font-semibold">
+            A Panorama Tours é muito mais do que uma simples agência de viagens. É uma parceira estratégica para quem valoriza experiências autênticas, soluções ágeis e um atendimento diferenciado. Fundada com o propósito de inovar o setor de viagens e turismo em Moçambique, oferecemos um serviço comple to que alia tecnologia de ponta, atendimento humanizado e uma equipa experiente e apaix onada por criar memórias inesquecíveis. Estamos preparados para servir tanto clientes particulares como corporações, oferecendo um serviço flexível, seguro e adaptado às mais diversas necessidades desde uma viagem de lazer até à gestão integral de viagens empresariais complexas.          </p>
 
           <div className='flex items-center gap-10 mt-10'>
             <div className='border-white border-2 py-1 px-10 rounded-2xl'>

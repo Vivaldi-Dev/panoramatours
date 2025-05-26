@@ -1,7 +1,7 @@
 'use client';
 import { useAirportSearch } from '@/hooks/useAirportSearch';
 import React, { useState, ChangeEvent, FormEvent, useEffect, useRef } from 'react';
-import Image from 'next/image'
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 interface Airport {
@@ -19,14 +19,6 @@ interface FormData {
   dataFim: string;
   adultos: number;
   criancas: number;
-}
-
-interface AirportSuggestionsProps {
-  suggestions: Airport[];
-  loading: boolean;
-  error: string | null;
-  onSelect: (airport: Airport) => void;
-  show: boolean;
 }
 
 export default function FlightSearchForm() {
@@ -47,6 +39,24 @@ export default function FlightSearchForm() {
     criancas: 0
   });
 
+  const {
+    setSearchTerm: setOrigemSearch,
+    suggestions: origemSuggestions,
+    loading: origemLoading,
+    error: origemError,
+    clearSuggestions: clearOrigemSuggestions
+  } = useAirportSearch();
+
+  // Hook para busca de aeroportos (destino)
+  const {
+    setSearchTerm: setDestinoSearch,
+    suggestions: destinoSuggestions,
+    loading: destinoLoading,
+    error: destinoError,
+    clearSuggestions: clearDestinoSuggestions
+  } = useAirportSearch();
+
+  // Fechar dropdowns quando clicar fora
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (origemRef.current && !origemRef.current.contains(event.target as Node)) {
@@ -60,22 +70,6 @@ export default function FlightSearchForm() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  const {
-   
-    setSearchTerm: setOrigemSearch,
-    suggestions: origemSuggestions,
-    loading: origemLoading,
-    error: origemError
-  } = useAirportSearch();
-
-  const {
-  
-    setSearchTerm: setDestinoSearch,
-    suggestions: destinoSuggestions,
-    loading: destinoLoading,
-    error: destinoError
-  } = useAirportSearch();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -97,26 +91,21 @@ export default function FlightSearchForm() {
     }
   };
 
-  const handleSelectAirport = (
-    field: keyof Pick<FormData, 'origem' | 'destino'>,
-    airport: Airport
-  ) => {
+  const handleSelectAirport = (field: 'origem' | 'destino', airport: Airport) => {
+    // Atualiza o campo no formulário com o código IATA
     setFormData(prev => ({
       ...prev,
       [field]: airport.iataCode
     }));
+
+    // Fecha o dropdown
     setShowDropdown(prev => ({ ...prev, [field]: false }));
 
+    // Limpa as sugestões
     if (field === 'origem') {
-      setOrigemSearch('');
+      clearOrigemSuggestions();
     } else {
-      setDestinoSearch('');
-    }
-  };
-
-  const handleFocus = (field: 'origem' | 'destino') => {
-    if (formData[field].length > 1) {
-      setShowDropdown(prev => ({ ...prev, [field]: true }));
+      clearDestinoSuggestions();
     }
   };
 
@@ -132,28 +121,40 @@ export default function FlightSearchForm() {
       `/transporte?origem=${formData.origem}` +
       `&destino=${formData.destino}` +
       `&dataInicio=${formData.dataInicio}` +
-      `&dataFim=${formData.dataFim}` +
+      `&dataFim=${formData.dataFim || ''}` +
       `&adultos=${formData.adultos}` +
       `&criancas=${formData.criancas}`
     );
   };
 
-  const AirportSuggestions: React.FC<AirportSuggestionsProps> = ({
+  // Componente de sugestões de aeroporto
+  const AirportSuggestions = ({
     suggestions,
     loading,
     error,
     onSelect,
     show
-  }) => (
-    show && (
-      <div className="absolute z-10 mt-1 w-full bg-white shadow-lg rounded-md max-h-60 overflow-auto">
+  }: {
+    suggestions: Airport[];
+    loading: boolean;
+    error: string | null;
+    onSelect: (airport: Airport) => void;
+    show: boolean;
+  }) => {
+    if (!show) return null;
+
+    return (
+      <div className="absolute z-10 mt-1 w-full bg-white shadow-lg rounded-md max-h-60 overflow-auto border border-gray-300">
         {loading && <div className="px-4 py-2 text-gray-500">Carregando...</div>}
         {error && <div className="px-4 py-2 text-red-500">{error}</div>}
-        {suggestions.map(airport => (
+        {!loading && !error && suggestions.length === 0 && (
+          <div className="px-4 py-2 text-gray-500">Nenhum aeroporto encontrado</div>
+        )}
+        {suggestions.map((airport) => (
           <div
-            key={`${airport.iataCode}-${airport.cityName}`} 
+            key={`${airport.iataCode}-${airport.cityName}`}
             className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-            onClick={() => onSelect(airport)}
+            onMouseDown={() => onSelect(airport)} // ✅ Aqui está o ajuste principal
           >
             <div className="font-semibold">
               {airport.name} ({airport.iataCode})
@@ -163,9 +164,10 @@ export default function FlightSearchForm() {
             </div>
           </div>
         ))}
+
       </div>
-    )
-  );
+    );
+  };
 
   return (
     <div className="">
@@ -183,21 +185,22 @@ export default function FlightSearchForm() {
                 type="text"
                 placeholder="Cidade ou código do aeroporto"
                 value={formData.origem}
-                onChange={handleInputChange}
-                onFocus={() => handleFocus('origem')}
+                onChange={(e) =>
+                  handleInputChange({ target: { id: 'origem', value: e.target.value.toUpperCase() } })
+                }
+                onFocus={() => setShowDropdown(prev => ({ ...prev, origem: true }))}
                 required
               />
+
             </div>
             <AirportSuggestions
               suggestions={origemSuggestions}
               loading={origemLoading}
               error={origemError}
               onSelect={(airport) => handleSelectAirport('origem', airport)}
-              show={showDropdown.origem}
+              show={showDropdown.origem && formData.origem.length > 1}
             />
           </div>
-
-          {/* ... outros campos permanecem iguais ... */}
 
           <div className="relative" ref={destinoRef}>
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="destino">
@@ -211,17 +214,20 @@ export default function FlightSearchForm() {
                 type="text"
                 placeholder="Cidade ou código do aeroporto"
                 value={formData.destino}
-                onChange={handleInputChange}
-                onFocus={() => handleFocus('destino')}
+                onChange={(e) =>
+                  handleInputChange({ target: { id: 'destino', value: e.target.value.toUpperCase() } })
+                }
+                onFocus={() => setShowDropdown(prev => ({ ...prev, destino: true }))}
                 required
               />
+
             </div>
             <AirportSuggestions
               suggestions={destinoSuggestions}
               loading={destinoLoading}
               error={destinoError}
               onSelect={(airport) => handleSelectAirport('destino', airport)}
-              show={showDropdown.destino}
+              show={showDropdown.destino && formData.destino.length > 1}
             />
           </div>
 
@@ -261,6 +267,7 @@ export default function FlightSearchForm() {
             </div>
           </div>
 
+
           <div>
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="adultos">
               Adultos
@@ -280,6 +287,7 @@ export default function FlightSearchForm() {
             </div>
           </div>
 
+
           <div>
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="criancas">
               Crianças (2-12 anos)
@@ -297,6 +305,9 @@ export default function FlightSearchForm() {
               />
             </div>
           </div>
+
+
+
         </div>
 
         <div className="flex justify-end">
