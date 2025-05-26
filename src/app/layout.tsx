@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        {/* <link rel="icon" href="/favicon.ico" sizes="any" /> */}
         <title>Panorama Tours</title>
         <meta name="description" content="Explore o mundo com a Panorama Tours" />
       </head>
