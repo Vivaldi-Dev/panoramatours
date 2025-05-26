@@ -92,6 +92,7 @@ export default function page() {
                                 src="/img/flyimg.jpg"
                                 alt=""
                                 className="w-full h-full object-cover"
+                                
                             />
                         </div>
                         <div className='text-center mt-4 mb-20'>
