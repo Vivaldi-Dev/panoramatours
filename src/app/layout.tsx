@@ -21,7 +21,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      
         <title>Panorama Tours</title>
         <meta name="description" content="Explore o mundo com a Panorama Tours" />
       </head>

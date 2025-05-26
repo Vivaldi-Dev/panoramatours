@@ -24,6 +24,8 @@ interface Flight {
   stops: number;
 }
 
+
+
 interface FlycardProps {
   flights?: Flight[];
   loading: boolean;
