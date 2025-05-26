@@ -30,7 +30,7 @@ interface FlycardProps {
 
 function FormPayment({ onClose }: { onClose: () => void }) {
   return (
-    <div className="fixed inset-0 bg-black opacity-85 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 bg-[#0096ff] backdrop-opacity-100 flex items-center justify-center z-50 p-4">
       <div className="bg-white p-6 rounded-xl shadow-md max-w-5xl w-full max-h-[90vh] overflow-y-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
           <div>
@@ -135,9 +135,26 @@ function FormPayment({ onClose }: { onClose: () => void }) {
 
 export default function Flycard({ flights = [], loading }: FlycardProps) {
   const [selectedFlight, setSelectedFlight] = useState<Flight | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const flightsPerPage = 6;
+
   const safeFlights = Array.isArray(flights) ? flights : [];
 
-  if (loading) {
+  const indexOfLastFlight = currentPage * flightsPerPage;
+  const indexOfFirstFlight = indexOfLastFlight - flightsPerPage;
+  const currentFlights = safeFlights.slice(indexOfFirstFlight, indexOfLastFlight);
+
+  const totalPages = Math.ceil(safeFlights.length / flightsPerPage);
+  const visiblePages = 5;
+  const currentGroup = Math.floor((currentPage - 1) / visiblePages);
+  const startPage = currentGroup * visiblePages + 1;
+  const endPage = Math.min(startPage + visiblePages - 1, totalPages);
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
+   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
@@ -145,6 +162,47 @@ export default function Flycard({ flights = [], loading }: FlycardProps) {
       </div>
     );
   }
+
+
+
+  <div className="flex justify-center mt-8">
+    <div className="flex space-x-2">
+      {startPage > 1 && (
+        <button
+          onClick={() => paginate(startPage - 1)}
+          className="px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300"
+        >
+          ‹
+        </button>
+      )}
+
+      {Array.from({ length: endPage - startPage + 1 }).map((_, index) => {
+        const pageNum = startPage + index;
+        return (
+          <button
+            key={pageNum}
+            onClick={() => paginate(pageNum)}
+            className={`px-4 py-2 rounded-full ${currentPage === pageNum
+                ? 'bg-[#0871B5] text-white'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
+          >
+            {pageNum}
+          </button>
+        );
+      })}
+
+      {endPage < totalPages && (
+        <button
+          onClick={() => paginate(endPage + 1)}
+          className="px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300"
+        >
+          ›
+        </button>
+      )}
+    </div>
+  </div>
+
 
   if (safeFlights.length === 0) {
     return (
@@ -166,7 +224,7 @@ export default function Flycard({ flights = [], loading }: FlycardProps) {
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {safeFlights.map((flight) => (
+        {currentFlights.map((flight) => (
           <div key={flight.id} className="relative mb-10">
             <div className="absolute top-2 -left-2 w-full h-full border-2 border-[#F9D423] rounded-2xl rotate-10 z-0 "></div>
 
@@ -222,13 +280,27 @@ export default function Flycard({ flights = [], loading }: FlycardProps) {
                     <span>Selecionar</span>
                     <Image
                       width={20}
-                      height={20} src="/icons/Arrow1.png" alt="Ícone"  />
+                      height={20} src="/icons/Arrow1.png" alt="Ícone" />
                   </button>
                 </div>
               </div>
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="flex justify-center mt-8">
+        <div className="flex space-x-2">
+          {Array.from({ length: Math.ceil(safeFlights.length / flightsPerPage) }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => paginate(index + 1)}
+              className={`px-4 py-2 rounded-full ${currentPage === index + 1 ? 'bg-[#0871B5] text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

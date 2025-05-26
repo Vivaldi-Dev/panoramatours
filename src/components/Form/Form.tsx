@@ -62,7 +62,7 @@ export default function FlightSearchForm() {
   }, []);
 
   const {
-   
+
     setSearchTerm: setOrigemSearch,
     suggestions: origemSuggestions,
     loading: origemLoading,
@@ -70,7 +70,7 @@ export default function FlightSearchForm() {
   } = useAirportSearch();
 
   const {
-  
+
     setSearchTerm: setDestinoSearch,
     suggestions: destinoSuggestions,
     loading: destinoLoading,
@@ -114,11 +114,11 @@ export default function FlightSearchForm() {
     }
   };
 
-  const handleFocus = (field: 'origem' | 'destino') => {
-    if (formData[field].length > 1) {
-      setShowDropdown(prev => ({ ...prev, [field]: true }));
-    }
-  };
+  // const handleFocus = (field: 'origem' | 'destino') => {
+  //   if (formData[field].length > 1) {
+  //     setShowDropdown(prev => ({ ...prev, [field]: true }));
+  //   }
+  // };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -149,11 +149,11 @@ export default function FlightSearchForm() {
       <div className="absolute z-10 mt-1 w-full bg-white shadow-lg rounded-md max-h-60 overflow-auto">
         {loading && <div className="px-4 py-2 text-gray-500">Carregando...</div>}
         {error && <div className="px-4 py-2 text-red-500">{error}</div>}
-        {suggestions.map(airport => (
+        {suggestions.map((airport) => (
           <div
-            key={`${airport.iataCode}-${airport.cityName}`} 
+            key={`${airport.iataCode}-${airport.cityName}`}
             className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-            onClick={() => onSelect(airport)}
+            onMouseDown={() => onSelect(airport)}
           >
             <div className="font-semibold">
               {airport.name} ({airport.iataCode})
@@ -163,6 +163,7 @@ export default function FlightSearchForm() {
             </div>
           </div>
         ))}
+
       </div>
     )
   );
@@ -177,6 +178,7 @@ export default function FlightSearchForm() {
             </label>
             <div className="border border-gray-300 rounded flex items-center px-4 py-3 bg-white">
               <Image width={10} height={10} className="w-5 h-5 mr-3" src="/icons/origem.png" alt="Ícone origem" />
+
               <input
                 className="appearance-none block w-full text-gray-700 bg-transparent focus:outline-none"
                 id="origem"
@@ -184,9 +186,10 @@ export default function FlightSearchForm() {
                 placeholder="Cidade ou código do aeroporto"
                 value={formData.origem}
                 onChange={handleInputChange}
-                onFocus={() => handleFocus('origem')}
+                onFocus={() => setShowDropdown(prev => ({ ...prev, origem: true }))}
                 required
               />
+
             </div>
             <AirportSuggestions
               suggestions={origemSuggestions}
@@ -212,9 +215,10 @@ export default function FlightSearchForm() {
                 placeholder="Cidade ou código do aeroporto"
                 value={formData.destino}
                 onChange={handleInputChange}
-                onFocus={() => handleFocus('destino')}
+                onFocus={() => setShowDropdown((prev) => ({ ...prev, destino: true }))}
                 required
               />
+
             </div>
             <AirportSuggestions
               suggestions={destinoSuggestions}

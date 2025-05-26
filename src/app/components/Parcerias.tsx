@@ -15,7 +15,7 @@ export default function Parcerias() {
                         </div>
 
                         <div className=''>
-                            <p className='text-[#F9D423] text-5xl font-bold'>Parcerias</p>
+                            <p className='text-[#ff681a] text-5xl font-bold'>Parcerias</p>
                             <p>Ao longo dos anos da sua existência, a Panorama Tours, Lda., foi </p>
                             <p>criando contactos, memorandos e parcerias com mais de 150</p>
                             <p>entidades constituídas por: Hotéis, Estancias Turísticas, </p>
