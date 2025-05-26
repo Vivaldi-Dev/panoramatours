@@ -28,7 +28,7 @@ export default function page() {
                             <p className='text-sm font-semibold text-[#000000D4]'>Pemba, Cabo Delgado</p>
                             <p className='text-2xl font-bold'>46.347 MZN</p>
                         </div>
-                        <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 z-10 flex items-center bg-[#FF8700] py-2 px-5 rounded-[30px] gap-4 shadow-md">
+                        <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 z-10 flex items-center bg-[#F9D423] py-2 px-5 rounded-[30px] gap-4 shadow-md">
                             <div className='w-10 h-10 rounded-full bg-white flex justify-center items-center'>
                                 <Image
                                     width={20} height={20}
@@ -37,7 +37,7 @@ export default function page() {
                                     className="w-4 h-4 object-contain"
                                 />
                             </div>
-                            <p className='font-semibold text-white'>Selecionar Tarifa</p>
+                            <p className='font-semibold text-[#0871B5]'>Selecionar Tarifa</p>
                         </div>
                     </div>
 
@@ -63,7 +63,7 @@ export default function page() {
                             <p className='text-sm font-semibold text-[#000000D4]'>Vilanculos Beach Lodge</p>
                             <p className='text-2xl font-bold'>138.390 MZN</p>
                         </div>
-                        <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 z-10 flex items-center bg-[#FF8700] py-2 px-5 rounded-[30px] gap-4 shadow-md">
+                        <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 z-10 flex items-center bg-[#F9D423] py-2 px-5 rounded-[30px] gap-4 shadow-md">
                             <div className='w-10 h-10 rounded-full bg-white flex justify-center items-center'>
                                 <Image
                                     width={20} height={20}
@@ -72,7 +72,7 @@ export default function page() {
                                     className="w-4 h-4 object-contain"
                                 />
                             </div>
-                            <p className='font-semibold text-white'>Selecionar Tarifa</p>
+                            <p className='font-semibold text-[#0871B5]'>Selecionar Tarifa</p>
                         </div>
                     </div>
 
@@ -92,14 +92,13 @@ export default function page() {
                                 src="/img/flyimg.jpg"
                                 alt=""
                                 className="w-full h-full object-cover"
-                                
                             />
                         </div>
                         <div className='text-center mt-4 mb-20'>
                             <p className='text-sm font-semibold text-[#000000D4]'>Anantara Bazaruto Resort</p>
                             <p className='text-2xl font-bold'>Consultar Preço</p>
                         </div>
-                        <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 z-10 flex items-center bg-[#FF8700] py-2 px-5 rounded-[30px] gap-4 shadow-md">
+                        <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 z-10 flex items-center bg-[#F9D423] py-2 px-5 rounded-[30px] gap-4 shadow-md">
                             <div className='w-10 h-10 rounded-full bg-white flex justify-center items-center'>
                                 <Image
                                     width={20} height={20}
@@ -108,7 +107,7 @@ export default function page() {
                                     className="w-4 h-4 object-contain"
                                 />
                             </div>
-                            <p className='font-semibold text-white'>Selecionar Tarifa</p>
+                            <p className='font-semibold text-[#0871B5]'>Selecionar Tarifa</p>
                         </div>
                     </div>
 

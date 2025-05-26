@@ -40,7 +40,7 @@ export default function Pacotes() {
                             <p>Descubra Moçambique e o Mundo com a Atlantic Travel Lda.Oferecemos pacotes cuidadosamente planeados para todos os gostos e orçamentos:</p>
                         </div>
 
-                        <div className='mt-5 flex items-center bg-[#FF8700] py-2 px-2 rounded-[30px] gap-4 w-5/12'>
+                        <div className='mt-5 flex items-center bg-[#ff681a] py-2 px-2 rounded-[30px] gap-4 w-5/12'>
 
                             <div className='w-10 h-10 rounded-full bg-white flex justify-center items-center'>
                                 <Image
@@ -52,7 +52,7 @@ export default function Pacotes() {
                                 />
                             </div>
 
-                            <p className='font-semibold text-[#fff]'>Pacotes Turísticos</p>
+                            <p className='font-semibold text-[#0871B5]'>Pacotes Turísticos</p>
                         </div>
                     </div>
 

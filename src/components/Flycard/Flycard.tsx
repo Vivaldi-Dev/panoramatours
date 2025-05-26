@@ -1,7 +1,6 @@
 'use client';
 import { Calendar } from 'lucide-react';
 import { useState } from 'react';
-
 import Image from 'next/image'
 
 interface Flight {
@@ -23,8 +22,6 @@ interface Flight {
   duration: string;
   stops: number;
 }
-
-
 
 interface FlycardProps {
   flights?: Flight[];
@@ -138,37 +135,16 @@ function FormPayment({ onClose }: { onClose: () => void }) {
 
 export default function Flycard({ flights = [], loading }: FlycardProps) {
   const [selectedFlight, setSelectedFlight] = useState<Flight | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const flightsPerPage = 6;
-
   const safeFlights = Array.isArray(flights) ? flights : [];
-
-  const indexOfLastFlight = currentPage * flightsPerPage;
-  const indexOfFirstFlight = indexOfLastFlight - flightsPerPage;
-  const currentFlights = safeFlights.slice(indexOfFirstFlight, indexOfLastFlight);
-
-  const totalPages = Math.ceil(safeFlights.length / flightsPerPage);
-  const visiblePages = 5;
-  const currentGroup = Math.floor((currentPage - 1) / visiblePages);
-  const startPage = currentGroup * visiblePages + 1;
-  const endPage = Math.min(startPage + visiblePages - 1, totalPages);
-
-  const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
-
 
   if (loading) {
     return (
-      <div className="fixed inset-0 flex justify-center items-center bg-white z-50">
-        <div className="flex items-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-          <span className="ml-3 text-lg text-blue-600">Buscando voos...</span>
-        </div>
+      <div className="flex justify-center items-center h-64">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        <span className="ml-3 text-lg">Buscando voos...</span>
       </div>
     );
   }
-
 
   if (safeFlights.length === 0) {
     return (
@@ -190,9 +166,9 @@ export default function Flycard({ flights = [], loading }: FlycardProps) {
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {currentFlights.map((flight) => (
+        {safeFlights.map((flight) => (
           <div key={flight.id} className="relative mb-10">
-            <div className="absolute top-2 -left-2 w-full h-full border-2 border-[#F88700] rounded-2xl rotate-10 z-0 "></div>
+            <div className="absolute top-2 -left-2 w-full h-full border-2 border-[#F9D423] rounded-2xl rotate-10 z-0 "></div>
 
             <div className="relative h-full rounded-2xl bg-white shadow-md flex flex-col justify-between">
               <div className="p-6">
@@ -202,16 +178,12 @@ export default function Flycard({ flights = [], loading }: FlycardProps) {
                     height={20}
                     src="/icons/bracos.png"
                     alt="Airline"
-                    className="object-contain"
+                    className=" object-contain"
                   />
                   <div>
                     <p className="font-bold">{flight.airline}</p>
                     <p className="text-sm text-gray-500">
                       {flight.duration} • {flight.stops > 0 ? `${flight.stops} escala${flight.stops > 1 ? 's' : ''}` : 'Voo direto'}
-                    </p>
-                    {/* Adicionando informações de país */}
-                    <p className="text-xs text-gray-400">
-                      {flight.departure.country} → {flight.arrival.country}
                     </p>
                   </div>
                 </div>
@@ -222,13 +194,7 @@ export default function Flycard({ flights = [], loading }: FlycardProps) {
                     <div>
                       <p className="text-gray-500 text-sm">Partida</p>
                       <p className="font-semibold">{flight.departure.date} • {flight.departure.time}</p>
-                      <p className="text-gray-700">
-                        {flight.departure.city} ({flight.departure.airport})
-                      </p>
-                      {/* Detalhes adicionais de partida */}
-                      <p className="text-xs text-gray-500 mt-1">
-                        Aeroporto Internacional de {flight.departure.city}
-                      </p>
+                      <p className="text-gray-700">{flight.departure.city} ({flight.departure.airport})</p>
                     </div>
                   </div>
 
@@ -237,33 +203,8 @@ export default function Flycard({ flights = [], loading }: FlycardProps) {
                     <div>
                       <p className="text-gray-500 text-sm">Chegada</p>
                       <p className="font-semibold">{flight.arrival.date} • {flight.arrival.time}</p>
-                      <p className="text-gray-700">
-                        {flight.arrival.city} ({flight.arrival.airport})
-                      </p>
-                      {/* Detalhes adicionais de chegada */}
-                      <p className="text-xs text-gray-500 mt-1">
-                        Aeroporto Internacional de {flight.arrival.city}
-                      </p>
+                      <p className="text-gray-700">{flight.arrival.city} ({flight.arrival.airport})</p>
                     </div>
-                  </div>
-
-                  {/* Adicionando seção de detalhes do voo */}
-                  <div className="pt-4 border-t border-gray-100">
-                    <p className="text-sm font-semibold text-gray-600 mb-2">Detalhes do Voo</p>
-                    <div className="flex justify-between text-xs text-gray-500">
-                      <span>Duração total:</span>
-                      <span>{flight.duration}</span>
-                    </div>
-                    <div className="flex justify-between text-xs text-gray-500">
-                      <span>Tipo de voo:</span>
-                      <span>{flight.stops > 0 ? 'Com escalas' : 'Voo direto'}</span>
-                    </div>
-                    {flight.stops > 0 && (
-                      <div className="flex justify-between text-xs text-gray-500">
-                        <span>Número de escalas:</span>
-                        <span>{flight.stops}</span>
-                      </div>
-                    )}
                   </div>
                 </div>
               </div>
@@ -273,61 +214,21 @@ export default function Flycard({ flights = [], loading }: FlycardProps) {
                   <div>
                     <p className="text-gray-500 text-sm">Preço total</p>
                     <p className="font-bold text-2xl">{flight.price}</p>
-                    {/* Adicionando informações de política de preço */}
-                    <p className="text-xs text-gray-500 mt-1">Taxas incluídas</p>
                   </div>
                   <button
-                    className="bg-[#F88700] hover:bg-[#e67e00] text-white font-semibold py-2 px-4 rounded-full flex items-center gap-2 transition-colors"
+                    className="bg-[#F9D423] hover:bg-[#f8cc0a] text-[#0871B5] font-semibold py-2 px-4 rounded-full flex items-center gap-2"
                     onClick={() => setSelectedFlight(flight)}
                   >
                     <span>Selecionar</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
+                    <Image
+                      width={20}
+                      height={20} src="/icons/Arrow1.png" alt="Ícone"  />
                   </button>
                 </div>
               </div>
             </div>
           </div>
         ))}
-      </div>
-
-      <div className="flex justify-center mt-8">
-        <div className="flex space-x-2">
-          {startPage > 1 && (
-            <button
-              onClick={() => paginate(startPage - 1)}
-              className="px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
-            >
-              ‹
-            </button>
-          )}
-
-          {Array.from({ length: endPage - startPage + 1 }).map((_, index) => {
-            const pageNum = startPage + index;
-            return (
-              <button
-                key={pageNum}
-                onClick={() => paginate(pageNum)}
-                className={`px-4 py-2 rounded-full transition-colors ${currentPage === pageNum
-                  ? 'bg-[#0871B5] text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
-              >
-                {pageNum}
-              </button>
-            );
-          })}
-
-          {endPage < totalPages && (
-            <button
-              onClick={() => paginate(endPage + 1)}
-              className="px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
-            >
-              ›
-            </button>
-          )}
-        </div>
       </div>
     </div>
   );

@@ -28,9 +28,3 @@
   background: rgba(255, 255, 255, 0.34);
   border-radius: 18px;
 }
-
-@layer utilities {
-  .animate-spin-slow {
-    animation: spin 2s linear infinite;
-  }
-}
