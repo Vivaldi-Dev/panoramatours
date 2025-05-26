@@ -35,10 +35,10 @@ export default function Header() {
                                 </a>
                             </p>
 
-                            <div className='flex items-center bg-[#0871B5] px-4 py-1 rounded-[41px] gap-4'>
+                            <div className='flex items-center bg-[#FF8700] px-4 py-1 rounded-[41px] gap-4'>
                                 <Image width={50} height={10} className='w-[30px]' src="/icons/phone.png" alt="Phone icon" />
                                 <div className='text-sm'>
-                                    <p className='text-[#F9D423] font-semibold mb-0'>Grátis:</p>
+                                  
                                     <p className='font-semibold text-white'>(+258) 84 74 91 425</p>
                                 </div>
                             </div>

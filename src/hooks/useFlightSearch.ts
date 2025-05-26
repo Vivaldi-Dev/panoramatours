@@ -7,12 +7,14 @@ interface Flight {
   departure: {
     airport: string;
     city: string;
+    country: string;
     date: string;
     time: string;
   };
   arrival: {
     airport: string;
     city: string;
+    country: string;
     date: string;
     time: string;
   };
@@ -71,22 +73,15 @@ export function useFlightSearch() {
   const [error, setError] = useState<string | null>(null);
 
   const createFlightHash = (offer: FlightOffer): string => {
-    const firstSegment = offer.itineraries[0].segments[0];
-    const lastSegment = offer.itineraries[0].segments[offer.itineraries[0].segments.length - 1];
-    
-    const baseString = `${offer.id || ''}-${
-      firstSegment.departure.iataCode
-    }-${firstSegment.departure.at}-${
-      lastSegment.arrival.iataCode
-    }-${lastSegment.arrival.at}-${
-      offer.price.total
-    }`;
-    
+    const first = offer.itineraries[0].segments[0];
+    const last = offer.itineraries[0].segments.at(-1)!;
+
+    const base = `${offer.id || ''}-${first.departure.iataCode}-${first.departure.at}-${last.arrival.iataCode}-${last.arrival.at}-${offer.price.total}`;
     let hash = 0;
-    for (let i = 0; i < baseString.length; i++) {
-      const char = baseString.charCodeAt(i);
+    for (let i = 0; i < base.length; i++) {
+      const char = base.charCodeAt(i);
       hash = ((hash << 5) - hash) + char;
-      hash = hash & hash;
+      hash |= 0;
     }
     return `flight-${Math.abs(hash).toString(36)}`;
   };
@@ -95,92 +90,107 @@ export function useFlightSearch() {
     const airlines: Record<string, string> = {
       '4Z': 'Airlink',
       'WV': 'FlyWestair',
-      'TM': 'LAM Mozambique',
-      'KQ': 'Kenya Airways'
+      'TM': 'LAM Mozambique Airlines',
+      'KQ': 'Kenya Airways',
+      'ET': 'Ethiopian Airlines',
+      'TA': 'LAM',
+      'SA': 'South African Airways'
     };
     return airlines[code] || code;
   };
 
-  const getCityName = (airportCode: string): string => {
+  const getCityName = (iataCode: string): string => {
     const cities: Record<string, string> = {
       'MPM': 'Maputo',
       'JNB': 'Joanesburgo',
       'LAD': 'Luanda',
       'HRE': 'Harare',
-      'WDH': 'Windhoek'
+      'WDH': 'Windhoek',
+      'LUN': 'Lusaka',
+      'BEY': 'Beirute',
+      'NBO': 'Nairóbi'
     };
-    return cities[airportCode] || airportCode;
+    return cities[iataCode] || iataCode;
   };
 
-  const formatDate = (isoString: string): string => {
-    return new Date(isoString).toLocaleDateString('pt-PT');
+  const getCountryName = (iataCode: string): string => {
+    const countries: Record<string, string> = {
+      'MPM': 'Moçambique',
+      'JNB': 'África do Sul',
+      'LAD': 'Angola',
+      'HRE': 'Zimbábue',
+      'WDH': 'Namíbia',
+      'LUN': 'Zâmbia',
+      'BEY': 'Líbano',
+      'NBO': 'Quênia'
+    };
+    return countries[iataCode] || 'Desconhecido';
   };
 
-  const formatTime = (isoString: string): string => {
-    return new Date(isoString).toLocaleTimeString('pt-PT', { 
-      hour: '2-digit', 
-      minute: '2-digit' 
+  const formatDate = (iso: string): string =>
+    new Date(iso).toLocaleDateString('pt-PT');
+
+  const formatTime = (iso: string): string =>
+    new Date(iso).toLocaleTimeString('pt-PT', {
+      hour: '2-digit',
+      minute: '2-digit'
     });
-  };
 
   const calculateDuration = (segments: Segment[]): string => {
-    const totalMinutes = segments.reduce((total, segment) => {
-      const duration = segment.duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?/);
-      const hours = parseInt(duration?.[1] || '0');
-      const minutes = parseInt(duration?.[2] || '0');
-      return total + (hours * 60) + minutes;
+    const totalMinutes = segments.reduce((acc, seg) => {
+      const match = seg.duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?/);
+      const h = parseInt(match?.[1] || '0');
+      const m = parseInt(match?.[2] || '0');
+      return acc + (h * 60) + m;
     }, 0);
-    
-    const hours = Math.floor(totalMinutes / 60);
-    const minutes = totalMinutes % 60;
-    return `${hours}h${minutes > 0 ? ` ${minutes}m` : ''}`;
+    const h = Math.floor(totalMinutes / 60);
+    const m = totalMinutes % 60;
+    return `${h}h${m > 0 ? ` ${m}m` : ''}`;
   };
 
-  const formatPrice = (amount: string, currency: string): string => {
-    const numericAmount = parseFloat(amount);
-    return new Intl.NumberFormat('pt-PT', {
+  const formatPrice = (amount: string, currency: string): string =>
+    new Intl.NumberFormat('pt-PT', {
       style: 'currency',
-      currency: currency,
+      currency,
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
-    }).format(numericAmount);
-  };
+    }).format(parseFloat(amount));
 
   const transformFlightData = (apiData: ApiResponse): Flight[] => {
     if (!apiData?.data) return [];
+    const seen = new Map<string, boolean>();
 
-    const uniqueFlights = new Map<string, boolean>();
+    return apiData.data.reduce((acc: Flight[], offer) => {
+      const firstSeg = offer.itineraries[0].segments[0];
+      const lastSeg = offer.itineraries[0].segments.at(-1)!;
+      const airlineCode = firstSeg.operating?.carrierCode || firstSeg.carrierCode;
+      const id = createFlightHash(offer);
 
-    return apiData.data.reduce((acc: Flight[], offer: FlightOffer) => {
-      const firstSegment = offer.itineraries[0].segments[0];
-      const lastSegment = offer.itineraries[0].segments[offer.itineraries[0].segments.length - 1];
-      const airlineCode = firstSegment.operating?.carrierCode || firstSegment.carrierCode;
-
-      const flightHash = createFlightHash(offer);
-
-      if (!uniqueFlights.has(flightHash)) {
-        uniqueFlights.set(flightHash, true);
-
+      if (!seen.has(id)) {
+        seen.set(id, true);
         acc.push({
-          id: flightHash,
+          id,
           airline: getAirlineName(airlineCode),
           departure: {
-            airport: firstSegment.departure.iataCode,
-            city: getCityName(firstSegment.departure.iataCode),
-            date: formatDate(firstSegment.departure.at),
-            time: formatTime(firstSegment.departure.at)
+            airport: firstSeg.departure.iataCode,
+            city: getCityName(firstSeg.departure.iataCode),
+            country: getCountryName(firstSeg.departure.iataCode),
+            date: formatDate(firstSeg.departure.at),
+            time: formatTime(firstSeg.departure.at)
           },
           arrival: {
-            airport: lastSegment.arrival.iataCode,
-            city: getCityName(lastSegment.arrival.iataCode),
-            date: formatDate(lastSegment.arrival.at),
-            time: formatTime(lastSegment.arrival.at)
+            airport: lastSeg.arrival.iataCode,
+            city: getCityName(lastSeg.arrival.iataCode),
+            country: getCountryName(lastSeg.arrival.iataCode),
+            date: formatDate(lastSeg.arrival.at),
+            time: formatTime(lastSeg.arrival.at)
           },
           price: formatPrice(offer.price.total, offer.price.currency),
           duration: calculateDuration(offer.itineraries[0].segments),
           stops: offer.itineraries[0].segments.length - 1
         });
       }
+
       return acc;
     }, []);
   };
@@ -188,13 +198,12 @@ export function useFlightSearch() {
   const search = async (formData: SearchParams) => {
     setLoading(true);
     setError(null);
-
     try {
-      const response = await axios.post<ApiResponse>('/api/search-flights', formData);
-      const transformedData = transformFlightData(response.data);
-      setResults(transformedData);
+      const res = await axios.post<ApiResponse>('/api/search-flights', formData);
+      const transformed = transformFlightData(res.data);
+      setResults(transformed);
     } catch (err) {
-      console.error('Erro na busca de voos:', err);
+      console.error('Erro ao buscar voos:', err);
       setError('Erro ao buscar voos. Por favor, tente novamente.');
     } finally {
       setLoading(false);
