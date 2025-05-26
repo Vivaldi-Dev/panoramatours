@@ -1,6 +1,7 @@
 'use client';
 import { Calendar } from 'lucide-react';
 import { useState } from 'react';
+
 import Image from 'next/image'
 
 interface Flight {
@@ -144,7 +145,6 @@ export default function Flycard({ flights = [], loading }: FlycardProps) {
   const indexOfFirstFlight = indexOfLastFlight - flightsPerPage;
   const currentFlights = safeFlights.slice(indexOfFirstFlight, indexOfLastFlight);
 
-  // Paginação inteligente com grupos de 5
   const totalPages = Math.ceil(safeFlights.length / flightsPerPage);
   const visiblePages = 5;
   const currentGroup = Math.floor((currentPage - 1) / visiblePages);
