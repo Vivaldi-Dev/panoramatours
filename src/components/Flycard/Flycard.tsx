@@ -282,7 +282,7 @@ export default function Flycard({ flights = [], loading }: FlycardProps) {
               onClick={() => paginate(endPage + 1)}
               className="px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300"
             >
-              ›
+              
             </button>
           )}
         </div>

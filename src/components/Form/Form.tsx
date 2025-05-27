@@ -170,7 +170,7 @@ export default function FlightSearchForm() {
 
   return (
     <div className="">
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
+      <form onSubmit={handleSubmit} className=" sm:bg-white sm:shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:mb-6">
           <div className="relative" ref={origemRef}>
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="origem">
@@ -303,7 +303,7 @@ export default function FlightSearchForm() {
           </div>
         </div>
 
-        <div className="flex justify-end">
+        <div className="flex justify-end mt-4 sm:mt-0">
           <button
             type="submit"
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-150">

@@ -7,11 +7,11 @@ export default function Pronto() {
         <div className='bg-[#0A4062]'>
             <div className='max-w-[1440px] mx-auto p-10'>
                 <div className='mt-5'>
-                    <p className='font-semibold text-5xl text-white'>Pronto para a tua próxima aventura</p>
+                    <p className='font-semibold sm:text-5xl text-white '>Pronto para a tua próxima aventura</p>
                     <p className='font-semibold text-white'>Simula agora o teu orçamento online ou fala com um dos nossos consultores </p>
                 </div>
-                <div className='flex items-center gap-4 mt-4'>
-                    <div className="flex items-center bg-[rgba(0,0,0,0.52)] py-2 px-4 rounded-full gap-4">
+                <div className='block sm:flex items-center gap-4 mt-4'>
+                    <div className="flex items-center bg-[rgba(0,0,0,0.52)] py-2 px-4 rounded-full gap-4 mb-5 sm:mb-0">
                         <p className=' rounded-full bg-[#FF8700] p-4'>
                             <Image width={30} height={30} src="/icons/CreditCard.png" alt="" />
                         </p>
