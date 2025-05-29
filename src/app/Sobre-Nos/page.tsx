@@ -5,9 +5,6 @@ import Outros from '../components/Outros';
 import Parcerias from '../components/Parcerias';
 
 
-
-
-
 export default function page() {
   return (
     <div>
