@@ -5,13 +5,13 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer className='bg-[#D9D9D98C] pt-20'>
+        <footer className='bg-[#D9D9D98C] sm:pt-20'>
             <div className='max-w-[1440px] mx-auto px-5 mt-10 '>
-                <div className='grid grid-cols-1 sm:grid-cols-3 gap-8 h-full '>
+                <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 h-full '>
 
-                    <div className="flex flex-col items-start justify-between h-full ">
+                    <div className="flex flex-col items-start justify-between h-full mr-50 sm:mr-0">
                         <Image width={270} height={50} src="/logotipo.png" alt="Logo" className="" />
-                        <div className='flex space-x-4 mb-10 mx-6'>
+                        <div className='flex space-x-4 mb-10 mt-2 sm:mx-6'>
                             <a href="https://wa.me/258874030641" target="_blank" rel="noopener noreferrer">
                                 <Phone className="w-6 h-6" />
                             </a>
@@ -37,7 +37,7 @@ export default function Footer() {
                         <p><Link href="/contacto" className="hover:underline">Contacte-nos </Link> </p>
                     </div>
 
-                    <div className="text-sm text-gray-700 space-y-2 mb-20">
+                    <div className="text-sm text-gray-700 space-y-2 mb-10 sm:mb-20">
                         <h4 className="font-bold text-base text-black">Contacte-nos</h4>
                         <p>📞 (+258) 87 403 0641  |  (+258) 84 749 1425</p>
                         <p>✉️ info@panoramatours.co.mz</p>
@@ -48,7 +48,7 @@ export default function Footer() {
 
 
             </div>
-            <div className='mt-10 border-t border-gray-300 pt-4 text-center text-white text-sm text-gray-600 p-4 bg-[#0871B5]'>
+            <div className='sm:mt-10 border-t border-gray-300 pt-4 text-center  text-sm text-white p-4 bg-[#0871B5]'>
                 © Copyright 2025 Panorama Tours, Lda. | Design by EquipePanorama Tours, Lda.
             </div>
         </footer>
