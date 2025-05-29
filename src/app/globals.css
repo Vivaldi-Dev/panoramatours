@@ -28,3 +28,12 @@
   background: rgba(255, 255, 255, 0.34);
   border-radius: 18px;
 }
+
+.scrollbar-hide {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;    
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;            
+}
