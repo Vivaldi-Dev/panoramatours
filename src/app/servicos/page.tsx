@@ -102,8 +102,8 @@ export default function Page() {
 
     return (
         <div>
-            <div className="max-w-[1640px] mx-auto mt-40 px-4">
-                
+            <div className="max-w-[1640px] mx-auto mt-30 sm:mt-40 px-4">
+
                 <div className="hidden md:grid md:grid-cols-2">
                     <div className="mb-20">
                         <p className="text-sm font-bold">Panorama Tourds Lda.</p>
