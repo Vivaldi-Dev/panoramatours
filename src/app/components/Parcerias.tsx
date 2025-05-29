@@ -4,18 +4,18 @@ import React from 'react'
 
 export default function Parcerias() {
     return (
-        <div>
-            <div className=' mt-20'>
+        <div className='sm:p-8'>
+            <div className=' sm:mt-20'>
 
 
                 <div className='max-w-[1640px] mx-auto'>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 gap-50 items-center'>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 sm:gap-50 items-center'>
 
-                        <div className="h-full w-full min-w-[200px] min-h-[300px] sm:p-2 md:p-2 rounded-2xl bg-[url('/img/happy.jpg')] bg-cover bg-center bg-no-repeat flex" >
+                        <div className="h-full w-full min-w-[200px] min-h-[300px] sm:p-2 md:p-2 sm:rounded-2xl bg-[url('/img/happy.jpg')] bg-cover bg-center bg-no-repeat flex" >
                         </div>
 
-                        <div className=''>
-                            <p className='text-[#ff681a] text-5xl font-bold'>Parcerias</p>
+                        <div className='p-8'>
+                            <p className='text-[#ff681a] text-5xl font-bold sm:mt-5 mb-5'>Parcerias</p>
                             <p>Ao longo dos anos da sua existência, a Panorama Tours, Lda., foi </p>
                             <p>criando contactos, memorandos e parcerias com mais de 150</p>
                             <p>entidades constituídas por: Hotéis, Estancias Turísticas, </p>
@@ -24,9 +24,9 @@ export default function Parcerias() {
                         </div>
                     </div>
 
-                    <div className='mt-20 mb-20'>
+                    <div className='sm:mt-20 sm:mb-20 p-8'>
                         <p className='text-3xl font-bold text-[#000000]'>Facilidades e Condições Especiais</p>
-                        <div className='mt-5'>
+                        <div className='mt-5 '>
                             <ul className="list-disc list-inside">
                                 <li>
                                     O nosso corpo técnico é composto por Consultores de viagens e turismo devidamente treinados e prontos para fazer face às necessidades dos clientes;

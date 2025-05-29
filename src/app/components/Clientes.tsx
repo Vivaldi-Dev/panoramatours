@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function Clientes() {
     return (
-        <div className='mx-auto max-w-[1640px] mb-5'>
+        <div className='mx-auto max-w-[1640px] mb-5 sm:p-8'>
             <div className='text-center'>
                 <p className='text-2xl font-bold'>Nossos Clientes</p>
                 <p className='text-black font-semibold text-sm'>
@@ -13,7 +13,7 @@ export default function Clientes() {
                     públicas, ONGs e empresas privadas, incluindo:
                 </p>
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-5 gap-10'>
+            <div className='mt-30 sm:mt-0 h-[180px] sm:h-full flex sm:grid grid-cols-1 sm:grid-cols-5 gap-10  overflow-x-auto scrollbar-hide px-1'>
                 {[
                     '/img/Rectangle8.jpg',
                     '/img/Rectangle2.png',
@@ -22,7 +22,7 @@ export default function Clientes() {
                     '/img/Rectangle.jpg'
                 ].map((src, idx) => (
                     <div key={idx} className='shadow bg-white rounded-2xl flex justify-center h-full p-2'>
-                        <Image src={src} alt={`Logo cliente ${idx + 1}`} width={200} height={100} />
+                        <Image className='w-[300px] ' src={src} alt={`Logo cliente ${idx + 1}`} width={100} height={100} style={{maxWidth:"none"}} />
                     </div>
                 ))}
             </div>

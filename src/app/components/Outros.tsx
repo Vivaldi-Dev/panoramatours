@@ -4,9 +4,9 @@ export default function Outros() {
     return (
         <div className=' bg-[#D9D9D9] h-full min-[600px]'>
             <div className='max-w-[1640px] mx-auto p-10 mt-10 '>
-                <p className='text-center font-bold mb-5 text-4xl'>Outras Instituições</p>
-                <div className=' grid grid-cols-1 sm:grid-cols-3'>
-                    <div className='text-sm font-semibold'>
+                <p className='text-center font-bold mb-5 sm:text-4xl'>Outras Instituições</p>
+                <div className=' grid grid-cols-1 sm:grid-cols-3 sm:mt-10 sm:mb-10'>
+                    <div className='text-sm font-semibold mb-4'>
                         <p>ACADEMIA DE ALTOS ESTUDOS ESTRATÉGICOS AAEE</p>
                         <p>ASNA CONSTRUÇÕES</p>
                         <p>ADMINISTRAÇÃO REGIONAL DE AGUAS</p>
@@ -21,7 +21,7 @@ export default function Outros() {
                         <p>UP TETE</p>
                     </div>
 
-                    <div className='text-sm font-semibold'>
+                    <div className='text-sm font-semibold mb-4'>
                         <p>ELECTRICIDADE DO ZAMBEZE</p>
                         <p>MIN. JUSTIÇA</p>
                         <p>EMBAIXADA DE BOTSWANA</p>
@@ -36,7 +36,7 @@ export default function Outros() {
                         <p>DPDH TETE</p>
                     </div>
 
-                    <div className='text-sm font-semibold'>
+                    <div className='text-sm font-semibold mb-4'>
                         <p>SWITS FOUNDATION FOR THE TECHNOCAL</p>
                         <p>HITACHI</p>
                         <p>MOZAMBICAN EDGE</p>

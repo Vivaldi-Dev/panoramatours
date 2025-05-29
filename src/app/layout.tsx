@@ -22,18 +22,23 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* <link rel="icon" href="/favicon.ico" sizes="any" /> */}
-        <title>Panorama Tours</title>
-        <meta name="description" content="Explore o mundo com a Panorama Tours" />
+        <title>Panorama Tours - Viagens e Turismo</title>
+        <meta name="description" content="Explore o mundo com a Panorama Tours. Panorama, PanoramaTours, panoramatours - sua agência de viagens confiável para destinos incríveis." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keywords" content="Panorama, Panorama Tours, panoramatours, panorama tours, viagens, turismo, pacotes de viagem, explorar o mundo, destinos turísticos" />
+        <meta name="author" content="Panorama Tours" />
+
+
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
-        
+
         <Header />
-        
+
         <main className="flex-1">
 
           {children}
-          
+
         </main>
 
         <Footer />
