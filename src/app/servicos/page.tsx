@@ -90,6 +90,34 @@ const servicos = [
             "Na Paranorama Tours, acreditamos que uma equipa forte se constrói também fora do escritório. É por isso que criámos programas especiais de Team Building, pensados para promover o espírito de grupo, a cooperação e o bem-estar — tudo isso em cenários inspiradores e descontraídos."
         ],
     },
+
+     {
+        id: 8,
+        titulo: "Tramitação de Vistos",
+        imagem: "/img/transmitacao.png",
+        descricao: [
+            "Regularize Seus Documentos com Facilidade.",
+            "Emissão e renovação de passaportes",
+            "Processamento de vistos para diversos países",
+            " Obtenção de DIRE (Documento de Identificação e Residência Estrangeira)",
+            "Assessoria completa em requisitos de imigração"
+        ],
+    },
+
+     {
+        id: 9,
+        titulo: "Luas-de-Mel",
+        imagem: "/img/luamel.jpg",
+        descricao: [
+            "Depois do “sim”, começa a aventura mais bonita da vida a dois. E a Paranorama Tours está aqui para tornar esse início ainda mais mágico com roteiros de lua de mel personalizados, criados com carinho para casais que querem viver momentos únicos.",
+            "Destinos paradisíacos",
+            "Hotéis românticos com mimos especiais",
+            "Jantares a dois sob as estrelas",
+            "Experiências relaxantes a dois (spa, massagens, passeios privativos)",
+            "Sessões fotográficas para eternizar o amor"
+            
+        ],
+    },
 ];
 
 export default function Page() {

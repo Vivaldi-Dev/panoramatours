@@ -5,7 +5,7 @@ import { MapPin, Clock, Phone } from 'lucide-react'
 export default function page() {
     return (
         <div>
-            <div className='max-w-[1440px] mx-auto mt-30 p-10'>
+            <div className='max-w-[1440px] mx-auto mt-30 p-5 sm:p-10'>
                 <div className='bg-[#ff681a] p-8 rounded-2xl'>
                     <div className='grid grid-cols-1 sm:grid-cols-3 gap-5'>
                         <div className='flex items-center gap-4 bg-white p-5 rounded-2xl'>
@@ -14,8 +14,8 @@ export default function page() {
                             </div>
 
                             <div>
-                                <p className='font-bold text-black'>Endereço</p>
-                                <p className='text-sm'>Av. Ahmed Sekou Touré, 2773 R/C -</p>
+                                <p className='font-bold text-black text-nowrap'>Endereço</p>
+                                <p className='text-sm text-nowrap'>Av. Ahmed Sekou Touré, 2773 R/C -</p>
                                 <p>Cidade de Maputo - Moçambique</p>
                             </div>
                         </div>
@@ -28,15 +28,15 @@ export default function page() {
                             <div>
                                 <p className='font-bold text-black'>Contactos</p>
                                 <ul className="list-disc list-inside">
-                                    <li>
+                                    <li className='text-nowrap'>
                                         (+258) 87 403 0641
                                     </li>
-                                    <li>
+                                    <li className='text-nowrap'>
                                         (+258) 84 749 1425
                                     </li>
 
-                                    <li>
-                                        Whatsapp:847491425
+                                    <li className='text-nowrap'>
+                                        Whatsapp: 847491425
                                     </li>
 
                                 </ul>
@@ -50,8 +50,8 @@ export default function page() {
 
                             <div>
                                 <p className='font-bold text-black'>Horário</p>
-                                <p className='text-sm'>Seg - Sex: 8:30 - 20:00</p>
-                                <p>Sábado: 9:30 - 21:30</p>
+                                <p className='text-sm text-nowrap'>Seg - Sex: 8:30 - 20:00</p>
+                                <p className='text-nowrap'>Sábado: 9:30 - 21:30</p>
                             </div>
                         </div>
 
@@ -65,9 +65,9 @@ export default function page() {
                     <p className='text-sm text-[#505050] font-semibold'>Comprometida em atingir e superar a satisfação das expectativas dos seus clientes. A Panorama Tours, apresenta uma estrutura bastante flexível e dinâmica, com uma equipe de front line altamente competente no ramo de negócios. Destaca-se também a comunicação fluente em Português, Inglês e línguas locais.</p>
 
                     <div className='mt-10'>
-                        <form className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-8 rounded-xl shadow-md">
+                        <form className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white sm:p-8 rounded-xl sm:shadow-md">
                             <div className="flex flex-col col-span-1">
-                                <label htmlFor="nome" className="mb-2 font-semibold text-sm text-gray-700">Nome</label>
+                                <label htmlFor="nome" className="mb-2 font-semibold text-sm text-gray-700 text-start sm:text-center">Nome</label>
                                 <input
                                     type="text"
                                     id="nome"
@@ -77,7 +77,7 @@ export default function page() {
                             </div>
 
                             <div className="flex flex-col col-span-1">
-                                <label htmlFor="email" className="mb-2 font-semibold text-sm text-gray-700">Email</label>
+                                <label htmlFor="email" className="mb-2 font-semibold text-sm text-gray-700 text-start sm:text-center">Email</label>
                                 <input
                                     type="email"
                                     id="email"
@@ -87,7 +87,7 @@ export default function page() {
                             </div>
 
                             <div className="flex flex-col col-span-1">
-                                <label htmlFor="telefone" className="mb-2 font-semibold text-sm text-gray-700">Telefone</label>
+                                <label htmlFor="telefone" className="mb-2 font-semibold text-sm text-gray-700 text-start sm:text-center">Telefone</label>
                                 <input
                                     type="text"
                                     id="telefone"
@@ -97,7 +97,7 @@ export default function page() {
                             </div>
 
                             <div className="flex flex-col col-span-1">
-                                <label htmlFor="assunto" className="mb-2 font-semibold text-sm text-gray-700">Assunto</label>
+                                <label htmlFor="assunto" className="mb-2 font-semibold text-sm text-gray-700 text-start sm:text-center">Assunto</label>
                                 <input
                                     type="text"
                                     id="assunto"
@@ -107,7 +107,7 @@ export default function page() {
                             </div>
 
                             <div className="flex flex-col col-span-1 md:col-span-2">
-                                <label htmlFor="mensagem" className="mb-2 font-semibold text-sm text-gray-700">Mensagem</label>
+                                <label htmlFor="mensagem" className="mb-2 font-semibold text-sm text-gray-700 text-start sm:text-center">Mensagem</label>
                                 <textarea
                                     id="mensagem"
                                     rows={5}  

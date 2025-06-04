@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 function Services() {
@@ -18,9 +19,11 @@ function Services() {
                                         Roteiros únicos, criados à tua medida.
                                     </p>
                                 </div>
-                                <p className='py-1.5 px-4 rounded-full bg-[#FF8700] text-[#fff] w-fit font-semibold text-sm'>
-                                    Ver opções
-                                </p>
+                                 <Link href="/pacotes-turisticos">
+                                    <p className="py-1.5 px-4 rounded-full bg-[#FF8700] text-[#fff] w-fit font-semibold text-sm">
+                                        Ver opções
+                                    </p>
+                                </Link>
                             </div>
                         </div>
 
@@ -32,9 +35,11 @@ function Services() {
                                         Roteiros únicos, criados à tua medida.
                                     </p>
                                 </div>
-                                <p className='py-1.5 px-4 rounded-full bg-[#FF8700] text-[#fff] w-fit font-semibold text-sm'>
-                                    Ver opções
-                                </p>
+                                <Link href="/servicos">
+                                    <p className="py-1.5 px-4 rounded-full bg-[#FF8700] text-[#fff] w-fit font-semibold text-sm">
+                                        Ver opções
+                                    </p>
+                                </Link>
                             </div>
                         </div>
 
@@ -46,9 +51,11 @@ function Services() {
                                     <p className='text-white font-semibold text-sm'>Viaja sem preocupações, tratamos de vistos.</p>
                                 </div>
 
-                                <p className='py-1.5 px-4 rounded-full bg-[#FF8700] text-[#fff] w-fit font-semibold text-sm'>
-                                    Ver opções
-                                </p>
+                                <Link href="/servicos">
+                                    <p className="py-1.5 px-4 rounded-full bg-[#FF8700] text-[#fff] w-fit font-semibold text-sm">
+                                        Ver opções
+                                    </p>
+                                </Link>
                             </div>
                         </div>
 
@@ -62,6 +69,7 @@ function Services() {
                                     </p>
                                 </div>
                                 <p className='py-1.5 px-4 rounded-full bg-[#FF8700] text-[#fff] w-fit font-semibold text-sm'>
+                                    
                                     Ver opções
                                 </p>
                             </div>

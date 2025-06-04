@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 function Pacotes() {
@@ -52,7 +53,10 @@ function Pacotes() {
                                     className="w-4 h-4 object-contain"
                                 />
                             </div>
-                            <p className='font-semibold text-white text-sm sm:text-base'>Pacotes Turísticos</p>
+                             <Link href="/servicos">
+                                     <p className='font-semibold text-white text-sm sm:text-base'>Pacotes Turísticos</p>
+                                </Link>
+                           
                         </div>
                     </div>
 
