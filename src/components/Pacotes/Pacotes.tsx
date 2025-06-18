@@ -39,7 +39,7 @@ function Pacotes() {
 
                         <div className='text-[rgba(0,0,0,0.52)] text-base mt-5'>
                             <p>
-                                Descubra Moçambique e o Mundo com a Atlantic Travel Lda. Oferecemos pacotes cuidadosamente planeados para todos os gostos e orçamentos:
+                                Descubra Moçambique e o Mundo com a Panorama Tours,Lda. Oferecemos pacotes cuidadosamente planeados para todos os gostos e orçamentos:
                             </p>
                         </div>
 
