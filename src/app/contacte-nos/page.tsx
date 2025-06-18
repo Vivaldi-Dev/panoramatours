@@ -15,7 +15,7 @@ export default function page() {
 
                             <div>
                                 <p className='font-bold text-black text-nowrap'>Endereço</p>
-                                <p className='text-sm text-nowrap'>Av. Ahmed Sekou Touré, 2773 R/C -</p>
+                                <p className='text-sm text-nowrap'> Av. Ho Chi Min , Nrº.1881, R/C </p>
                                 <p>Cidade de Maputo - Moçambique</p>
                             </div>
                         </div>

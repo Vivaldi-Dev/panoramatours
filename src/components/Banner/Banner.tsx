@@ -16,13 +16,11 @@ export default function Banner() {
             <div className="relative z-10 h-full md:min-h-screen flex flex-col items-center justify-between px-4 py-24 md:py-32">
                 <div className="flex-1 flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto">
                     <p className="text-white text-sm sm:text-lg  mb-2 md:mb-4">Viagens Internacionais | Viagens Nacionais</p>
-                    <h1 className="text-white text-2xl md:text-4xl lg:text-6xl font-bold drop-shadow-lg sm:mb-2">Explore o Mundo</h1>
-                    <h1 className="text-white text-2xl md:text-4xl lg:text-6xl font-bold drop-shadow-lg mb-6">com Confiança</h1>
+                    <h1 className="text-white text-2xl md:text-4xl lg:text-6xl font-bold drop-shadow-lg sm:mb-2">Explore o Mundo </h1>
+                    <h1 className="text-white text-2xl md:text-4xl lg:text-6xl font-bold drop-shadow-lg mb-6">com a Panorama Tours</h1>
                     <h1> </h1>
                     <div className='font-semibold text-white text-sm md:text-lg'>
-                        <p>Desde cidades históricas na Europa a aventuras na África do</p>
-                        <p>Sul, criamos itinerários sob medida com voos, hotéis e</p>
-                        <p>experiências únicas.</p>
+                        <p>Simula o seu orçamento</p>
                     </div>
                 </div>
 

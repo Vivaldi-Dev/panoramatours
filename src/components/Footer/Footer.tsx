@@ -41,7 +41,7 @@ export default function Footer() {
                         <h4 className="font-bold text-base text-black">Contacte-nos</h4>
                         <p>📞 (+258) 87 403 0641  |  (+258) 84 749 1425</p>
                         <p>✉️ info@panoramatours.co.mz</p>
-                        <p>📍 Av. Ho Chi Minh, 1881 R/C, Flete Nr.2, Hotel Fátima</p>
+                        <p>📍 Av. Ho Chi Min , Nrº.1881, R/C </p>
                         <p className='font-bold text-black'>Horário Comercial: Segunda a Sexta-feira (9h00 - 17h00)</p>
                     </div>
                 </div>
